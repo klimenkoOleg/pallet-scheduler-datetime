@@ -1,12 +1,12 @@
 [package]
 name = "pallet-scheduler-datetime"
-version = "4.0.0-dev"
+version = "0.1.0"
 authors = ["Konrad Sosnowski <sosnowski.konrad@gmail.com>"]
 edition = "2021"
 license = "Apache-2.0"
-homepage = "https://github.com/konrads/substrate"
-repository = "https://github.com/konrads/substrate"
-description = "FRAME DateTime Scheduler pallet"
+homepage = "https://github.com/konrads/pallet-scheduler-datetime"
+repository = "https://github.com/konrads/pallet-scheduler-datetime"
+description = "Datetime (unixtime) Scheduler pallet, based on FRAME Scheduler"
 readme = "README.md"
 
 [dependencies]

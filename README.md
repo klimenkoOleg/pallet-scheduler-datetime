@@ -1,12 +1,8 @@
-# Scheduler
+# Datetime Scheduler
 
 [![test](https://github.com/konrads/pallet-scheduler-datetime/workflows/test/badge.svg)](https://github.com/konrads/pallet-scheduler-datetime/actions/workflows/test.yml)
 
-A module for scheduling dispatches.
-
-- [`scheduler::Config`](https://docs.rs/pallet-scheduler/latest/pallet_scheduler/trait.Config.html)
-- [`Call`](https://docs.rs/pallet-scheduler/latest/pallet_scheduler/enum.Call.html)
-- [`Module`](https://docs.rs/pallet-scheduler/latest/pallet_scheduler/struct.Module.html)
+A module for scheduling dispatches via unixtime based schedules.
 
 ## Overview
 
