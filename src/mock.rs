@@ -24,7 +24,7 @@ use crate as scheduler_datetime;
 use frame_support::{
     ord_parameter_types, parameter_types,
     traits::{
-        ConstU32, ConstU64, Contains, EitherOfDiverse, EqualPrivilegeOnly, OnFinalize, OnInitialize,
+        ConstU32, ConstU64, Contains, EnsureOneOf, EqualPrivilegeOnly, OnFinalize, OnInitialize,
     },
     weights::constants::RocksDbWeight,
 };
@@ -185,7 +185,7 @@ impl Config for Test {
     type PalletsOrigin = OriginCaller;
     type Call = Call;
     type MaximumWeight = MaximumSchedulerWeight;
-    type ScheduleOrigin = EitherOfDiverse<EnsureRoot<u64>, EnsureSignedBy<One, u64>>;
+    type ScheduleOrigin = EnsureOneOf<EnsureRoot<u64>, EnsureSignedBy<One, u64>>;
     type MaxScheduledPerBlock = ConstU32<10>;
     type WeightInfo = ();
     type OriginPrivilegeCmp = EqualPrivilegeOnly;
