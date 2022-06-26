@@ -22,7 +22,6 @@ frame-support = { default-features = false, git = "https://github.com/paritytech
 frame-benchmarking = { default-features = false, git = "https://github.com/paritytech/substrate.git", branch = 'polkadot-v0.9.25', optional = true  }
 pallet-timestamp = { git = "https://github.com/paritytech/substrate.git", branch = 'polkadot-v0.9.25', default-features = false }
 chrono-light = { version = "0.1.4", default-features = false, features = ["scale"] }
-# as per: https://bytemeta.vip/repo/paritytech/substrate/issues/11706, forced syn-1.0.96 version in Cargo.lock
 
 [dev-dependencies]
 sp-core = { default-features = false, git = "https://github.com/paritytech/substrate.git", branch = 'polkadot-v0.9.25' }
