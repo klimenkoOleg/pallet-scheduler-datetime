@@ -1,0 +1,52 @@
+[package]
+name = "pallet-scheduler-datetime"
+version = "4.0.0-dev"
+authors = ["Konrad Sosnowski <sosnowski.konrad@gmail.com>"]
+edition = "2021"
+license = "Apache-2.0"
+homepage = "https://github.com/konrads/substrate"
+repository = "https://github.com/konrads/substrate"
+description = "FRAME DateTime Scheduler pallet"
+readme = "README.md"
+
+[dependencies]
+codec = { package = "parity-scale-codec", version = "3.1.2", default-features = false, features = ["derive", "max-encoded-len"] }
+scale-info = { version = "2.1.2", default-features = false, features = ["derive"] }
+log = { version = "0.4.17", default-features = false }
+sp-std = { default-features = false, git = 'https://github.com/paritytech/substrate.git', rev="2f28ebfc1e430328e6c117e70eb0220a6e9705e1" }
+sp-io = { default-features = false, git = "https://github.com/paritytech/substrate.git", rev="2f28ebfc1e430328e6c117e70eb0220a6e9705e1" }
+
+sp-runtime = { default-features = false, git = "https://github.com/paritytech/substrate.git", rev="2f28ebfc1e430328e6c117e70eb0220a6e9705e1" }
+frame-system = { default-features = false, git = "https://github.com/paritytech/substrate.git", rev="2f28ebfc1e430328e6c117e70eb0220a6e9705e1" }
+frame-support = { default-features = false, git = "https://github.com/paritytech/substrate.git", rev="2f28ebfc1e430328e6c117e70eb0220a6e9705e1" }
+frame-benchmarking = { default-features = false, git = "https://github.com/paritytech/substrate.git", rev="2f28ebfc1e430328e6c117e70eb0220a6e9705e1", optional = true  }
+pallet-timestamp = { git = "https://github.com/paritytech/substrate.git", rev="2f28ebfc1e430328e6c117e70eb0220a6e9705e1", default-features = false }
+chrono-light = { version = "0.1.4", default-features = false, features = ["scale"] }
+# as per: https://bytemeta.vip/repo/paritytech/substrate/issues/11706, forced syn-1.0.96 version in Cargo.lock
+
+[dev-dependencies]
+sp-core = { default-features = false, git = "https://github.com/paritytech/substrate.git", rev="2f28ebfc1e430328e6c117e70eb0220a6e9705e1" }
+substrate-test-utils = { git = "https://github.com/paritytech/substrate.git", rev="2f28ebfc1e430328e6c117e70eb0220a6e9705e1" }
+pallet-preimage = { git = "https://github.com/paritytech/substrate.git", rev="2f28ebfc1e430328e6c117e70eb0220a6e9705e1" }
+
+[features]
+default = ["std"]
+runtime-benchmarks = [
+	"frame-benchmarking",
+	"frame-support/runtime-benchmarks",
+	"frame-system/runtime-benchmarks",
+]
+std = [
+	"codec/std",
+	"scale-info/std",
+	"log/std",
+	"sp-std/std",
+	"sp-io/std",
+	"sp-runtime/std",
+	"frame-system/std",
+	"frame-support/std",
+	"frame-benchmarking/std",
+	"pallet-timestamp/std",
+	"chrono-light/std"
+]
+try-runtime = ["frame-support/try-runtime"]
