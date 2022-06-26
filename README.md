@@ -28,7 +28,7 @@ then those filter will not be used when dispatching the schedule call.
 ## TODO
 
 - backfill runs in case of downtime
-- update libs to latest stable substrate version
+- fix weights
 
 ## Interface
 
