@@ -82,7 +82,7 @@ use sp_runtime::{
 	traits::{AtLeast32Bit, BadOrigin, One, SaturatedConversion, Saturating},
 	RuntimeDebug,
 };
-use sp_std::{collections::btree_map::BTreeMap, borrow::Borrow, cmp::Ordering, marker::PhantomData, prelude::*};
+use sp_std::{collections::btree_map::BTreeMap, borrow::Borrow, cmp::Ordering, marker::PhantomData, prelude::*, vec};
 pub use weights::WeightInfo;
 
 /// Just a simple index for naming period tasks.
