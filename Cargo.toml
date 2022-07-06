@@ -21,7 +21,7 @@ frame-support = { default-features = false, version = '4.0.0-dev', git = 'https:
 frame-benchmarking = { default-features = false, version = '4.0.0-dev', git = 'https://github.com/paritytech/substrate.git', branch = 'polkadot-v0.9.24', optional = true  }
 pallet-timestamp = { version = '4.0.0-dev', git = 'https://github.com/paritytech/substrate.git', branch = 'polkadot-v0.9.24', default-features = false }
 # chrono-light = { version = '0.1.4', default-features = false, features = ['scale'] }
-chrono-light = { version = '0.1.4', git = 'https://github.com/konrads/chrono-light.git', ver = '1aa3cb68b2d1598778ee46d202532c1405dd2ffe', default-features = false, features = ['scale'] }
+chrono-light = { version = '0.1.4', git = 'https://github.com/konrads/chrono-light.git', ver = '1fe18153cc38e69e37e51a9721bf7abeaee10b8e', default-features = false, features = ['scale'] }
 
 [dev-dependencies]
 sp-core = { default-features = false, version = '6.0.0', git = 'https://github.com/paritytech/substrate.git', branch = 'polkadot-v0.9.24' }
