@@ -275,7 +275,8 @@ dependencies = [
 [[package]]
 name = "chrono-light"
 version = "0.1.5"
-source = "git+https://github.com/konrads/chrono-light.git?rev=1fe18153cc38e69e37e51a9721bf7abeaee10b8e#1fe18153cc38e69e37e51a9721bf7abeaee10b8e"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "8e4c8ca8ad1a9255ac553ef2fffb4f1470afec68673d1e0ca92e4bd473c98ea3"
 dependencies = [
  "parity-scale-codec",
  "scale-info",
@@ -1295,7 +1296,7 @@ dependencies = [
 
 [[package]]
 name = "pallet-scheduler-datetime"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "chrono-light",
  "frame-benchmarking",

@@ -41,3 +41,7 @@ then those filter will not be used when dispatching the schedule call.
 - `cancel_named` - the named complement to the cancel function.
 
 License: Unlicense
+
+## Substrate runtime wiring
+
+Runtime utilizing this pallet is exemplified in [substrate-node-playground](https://github.com/konrads/substrate-node-playground).
