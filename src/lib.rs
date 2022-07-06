@@ -504,54 +504,6 @@ pub mod pallet {
 			Self::do_cancel_named(Some(origin.caller().clone()), id)?;
 			Ok(())
 		}
-
-		/// Anonymously schedule a task after a delay.
-		///
-		/// # <weight>
-		/// Same as [`schedule`].
-		/// # </weight>
-		#[pallet::weight(<T as Config>::WeightInfo::schedule(T::MaxScheduledPerBlock::get()))]
-		pub fn schedule_after(
-			origin: OriginFor<T>,
-			schedule: Schedule,
-			priority: Priority,
-			call: Box<CallOrHashOf<T>>,
-		) -> DispatchResult {
-			T::ScheduleOrigin::ensure_origin(origin.clone())?;
-			let origin = <T as Config>::Origin::from(origin);
-			Self::do_schedule(
-				schedule,
-				priority,
-				origin.caller().clone(),
-				*call,
-			)?;
-			Ok(())
-		}
-
-		/// Schedule a named task after a delay.
-		///
-		/// # <weight>
-		/// Same as [`schedule_named`](Self::schedule_named).
-		/// # </weight>
-		#[pallet::weight(<T as Config>::WeightInfo::schedule_named(T::MaxScheduledPerBlock::get()))]
-		pub fn schedule_named_after(
-			origin: OriginFor<T>,
-			id: Vec<u8>,
-			schedule: Schedule,
-			priority: Priority,
-			call: Box<CallOrHashOf<T>>,
-		) -> DispatchResult {
-			T::ScheduleOrigin::ensure_origin(origin.clone())?;
-			let origin = <T as Config>::Origin::from(origin);
-			Self::do_schedule_named(
-				id,
-				schedule,
-				priority,
-				origin.caller().clone(),
-				*call,
-			)?;
-			Ok(())
-		}
 	}
 }
 
