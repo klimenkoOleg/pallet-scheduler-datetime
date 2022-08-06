@@ -61,7 +61,7 @@ mod mock;
 #[cfg(test)]
 mod tests;
 pub mod weights;
-mod traits;
+pub mod traits;
 use traits::*;
 
 use chrono_light::prelude::{Calendar, Schedule};
