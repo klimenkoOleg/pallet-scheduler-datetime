@@ -2,13 +2,12 @@
 
 [![test](https://github.com/konrads/pallet-scheduler-datetime/workflows/test/badge.svg)](https://github.com/konrads/pallet-scheduler-datetime/actions/workflows/test.yml)
 
-A module for scheduling dispatches via unixtime based schedules.
+A module for unixtime based scheduling.
 
 ## Overview
 
-This module exposes capabilities for scheduling dispatches to occur at a
-specified schedule based on starting UTC time, optional ending UTC time, and
-periods consisting of multiples of year/month/week/day/hour/minute/second/ms.
+This pallet provides capability to dispatch schedules with a starting UTC time,
+optional ending UTC time, and periods consisting of multiples of year/month/week/day/hour/minute/second/ms.
 These scheduled dispatches may be named or anonymous and may be canceled.
 
 Scheduling is done via [chrono-light](https://crates.io/crates/chrono-light) library.
@@ -40,7 +39,7 @@ then those filter will not be used when dispatching the schedule call.
   `Vec<u8>` parameter that can be used for identification.
 - `cancel_named` - the named complement to the cancel function.
 
-License: Unlicense
+License: Unlicensed
 
 ## Substrate runtime wiring
 

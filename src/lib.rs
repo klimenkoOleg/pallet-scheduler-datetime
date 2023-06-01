@@ -441,7 +441,7 @@ pub mod pallet {
 	impl<T: Config> Pallet<T> {
 		#[pallet::weight(<T as Config>::WeightInfo::sync_scheduleds(T::MaxScheduledPerBlock::get()))]
 		pub fn sync_scheduleds(origin: OriginFor<T>) -> DispatchResult {
-			T::ScheduleOrigin::ensure_origin(origin.clone())?;
+			T::ScheduleOrigin::ensure_origin(origin)?;
 			let current_block = <frame_system::Pallet<T>>::block_number();
 			Self::do_sync_scheduleds(current_block);
 			Ok(())
@@ -453,7 +453,7 @@ pub mod pallet {
 			origin: OriginFor<T>,
 			schedule: Schedule,
 			priority: Priority,
-			call: Box<CallOrHashOf<T>>,
+			call: Box<CallOrHashOf<T>>
 		) -> DispatchResult {
 			T::ScheduleOrigin::ensure_origin(origin.clone())?;
 			let origin = <T as Config>::Origin::from(origin);
@@ -525,7 +525,7 @@ impl<T: Config> Pallet<T> {
 					None => Result::Err(ignore_error),  // won't happen, we picked existing key
 					Some(scheduleds) => {
 						let mut clock_drift_detected = false;
-						let indexed_scheduleds = scheduleds.into_iter().filter_map(|x| x);
+						let indexed_scheduleds = scheduleds.into_iter().flatten();
 						let new_scheduled_opts = indexed_scheduleds.filter_map(|x| {
 							// detect clock drift
 							let block_delay = ceil_div(x.next_trigger_ms.saturating_sub(now_ms), block_duration);
@@ -570,9 +570,9 @@ impl<T: Config> Pallet<T> {
 			Agenda::<T>::mutate(block_number, |curr_scheduleds| {
 				let curr_offset = curr_scheduleds.len();
 				for (i, id) in scheduleds.iter().enumerate().filter_map(|(i, x)| Some((i, x.maybe_id.as_ref()?))) {
-					Lookup::<T>::insert(&id, (block_number, (i + curr_offset) as u32));
+					Lookup::<T>::insert(id, (block_number, (i + curr_offset) as u32));
 				}
-				let mut schedule_opts = scheduleds.into_iter().map(|x|Some(x)).collect::<Vec<_>>();
+				let mut schedule_opts = scheduleds.into_iter().map(Some).collect::<Vec<_>>();
 				curr_scheduleds.append(&mut schedule_opts);
 			});
 		}
@@ -612,7 +612,7 @@ impl<T: Config> Pallet<T> {
 			schedule,
 			next_trigger_ms,
 			origin,
-			_phantom: PhantomData::<T::AccountId>::default(),
+			_phantom: PhantomData::<T::AccountId>,
 		});
 		Agenda::<T>::append(next_trigger_block, s);
 		let index = Agenda::<T>::decode_len(next_trigger_block).unwrap_or(1) as u32 - 1;
@@ -714,7 +714,7 @@ impl<T: Config> Pallet<T> {
 		Agenda::<T>::append(next_trigger_block, Some(s));
 		let index = Agenda::<T>::decode_len(next_trigger_block).unwrap_or(1) as u32 - 1;
 		let address = (next_trigger_block, index);
-		Lookup::<T>::insert(&id, &address);
+		Lookup::<T>::insert(&id, address);
 		Self::deposit_event(Event::Scheduled { when: next_trigger_block, index });
 
 		Ok(address)

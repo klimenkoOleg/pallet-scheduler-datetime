@@ -92,7 +92,7 @@ impl<T: Decode, H> MaybeHashed<T, H> {
                     Ok(c) => (Self::Value(c), Some(h)),
                     Err(_) => (Self::Hash(h), None),
                 },
-                None => return (Self::Hash(h), None),
+                None => (Self::Hash(h), None),
             },
         }
     }
